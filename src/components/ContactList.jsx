@@ -3,20 +3,19 @@ import { Link } from 'react-router-dom';
 import { collection, getDocs, query, orderBy } from 'firebase/firestore';
 import { db } from '../db';
 
-function ContactList() {
-  const [contacts, setContacts] = useState([]);
-  const [searchTerm, setSearchTerm] = useState('');
+    function ContactList() {
+    const [contacts, setContacts] = useState([]);
+    const [searchTerm, setSearchTerm] = useState('');
 
-  useEffect(() => {
-    const fetchContacts = async () => {
+    useEffect(() => {
+        const fetchContacts = async () => {
       const q = query(collection(db, 'contacts'), orderBy('lastName'));
       const contactsSnapshot = await getDocs(q);
       const contactsList = contactsSnapshot.docs.map(doc => ({
         id: doc.id,
         ...doc.data()
-      }));
-      setContacts(contactsList);
-    };
+        }));
+        setContacts(contactsList);};
     fetchContacts();
   }, []);
 
@@ -37,13 +36,11 @@ function ContactList() {
         {filteredContacts.map(contact => (
           <li key={contact.id}>
             <Link to={`/contact/${contact.id}`}>
-              {contact.lastName}, {contact.firstName}
+        {contact.lastName}, {contact.firstName}
             </Link>
           </li>
         ))}
       </ul>
-    </div>
-  );
-}
+    </div>);}
 
 export default ContactList;

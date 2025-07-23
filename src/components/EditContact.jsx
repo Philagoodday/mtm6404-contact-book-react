@@ -8,7 +8,6 @@ function EditContact() {
   const { id } = useParams();
   const navigate = useNavigate();
 
-  // 1. Fetch the existing contact data when the component loads
   useEffect(() => {
     const fetchContact = async () => {
       const docRef = doc(db, 'contacts', id);
@@ -20,22 +19,20 @@ function EditContact() {
     fetchContact();
   }, [id]);
 
-  // 2. Update the state as the user types in the form
   const handleChange = (e) => {
     setContact({ ...contact, [e.target.name]: e.target.value });
   };
 
-  // 3. Save the updated data to Firebase on submit
   const handleSubmit = async (e) => {
     e.preventDefault();
     const docRef = doc(db, 'contacts', id);
     await updateDoc(docRef, contact);
-    navigate(`/contact/${id}`); // Navigate back to the contact's details view
+    navigate(`/contact/${id}`); 
   };
 
   return (
     <form onSubmit={handleSubmit} className="contact-form">
-      <h2>Edit Contact</h2>
+      <h2>Edit comtact</h2>
       <input name="firstName" value={contact.firstName} onChange={handleChange} />
       <input name="lastName" value={contact.lastName} onChange={handleChange} />
       <input name="email" type="email" value={contact.email} onChange={handleChange} />

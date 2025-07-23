@@ -10,7 +10,7 @@ function App() {
     <BrowserRouter>
       <div className="App">
         <header>
-          <h1><Link to="/">Contact Book</Link></h1>
+          <h1><Link to="/">Contact vook</Link></h1>
           <nav>
             <Link to="/add" className="button-like">add contact</Link>
           </nav>

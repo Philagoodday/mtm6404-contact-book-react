@@ -7,26 +7,24 @@ function AddContact() {
   const [contact, setContact] = useState({ firstName: '', lastName: '', email: '' });
   const navigate = useNavigate();
 
-  const handleChange = (e) => {
-    setContact({ ...contact, [e.target.name]: e.target.value });
+        const handleChange = (e) => {
+        setContact({ ...contact, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async (e) => {
+    const handleSubmit = async (e) => {
     e.preventDefault(); 
-    if (!contact.firstName || !contact.lastName || !contact.email) {
+         if (!contact.firstName || !contact.lastName || !contact.email) {
       alert("fill in all required fields");
       return;
-    }
-    try {
+         } try {
       const docRef = await addDoc(collection(db, 'contacts'), contact);
       navigate(`/contact/${docRef.id}`);
-    } catch (e) {
+        } catch (e) {
       console.error("error: ", e);
       alert("Failed to add contact。");
-    }
-  };
+     } };
 
-  return (
+return (
     <form onSubmit={handleSubmit} className="contact-form">
       <h2>add new contact</h2>
       <input name="firstName" placeholder="lastName" onChange={handleChange} />
@@ -35,8 +33,6 @@ function AddContact() {
       <input name="phone" placeholder="phone" onChange={handleChange} />
       <input name="address" placeholder="address" onChange={handleChange} />
       <button type="submit">add</button>
-    </form>
-  );
-}
+    </form>);}
 
 export default AddContact;

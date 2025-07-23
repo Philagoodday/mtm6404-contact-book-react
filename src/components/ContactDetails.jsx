@@ -3,22 +3,20 @@ import { useParams, useNavigate, Link } from 'react-router-dom';
 import { doc, getDoc, deleteDoc } from 'firebase/firestore';
 import { db } from '../db';
 
-function ContactDetails() {
-  const [contact, setContact] = useState(null);
-  const { id } = useParams();
-  const navigate = useNavigate();
+    function ContactDetails() {
+        const [contact, setContact] = useState(null);
+        const { id } = useParams();
+        const navigate = useNavigate();
 
-  useEffect(() => {
-    const fetchContact = async () => {
-      const docRef = doc(db, 'contacts', id);
-      const docSnap = await getDoc(docRef);
+        useEffect(() => {
+         const fetchContact = async () => {
+             const docRef = doc(db, 'contacts', id);
+         const docSnap = await getDoc(docRef);
 
       if (docSnap.exists()) {
         setContact({ id: docSnap.id, ...docSnap.data() });
       } else {
-        console.log("没有找到该文档!");
-      }
-    };
+        console.log("No such document!");}};
     fetchContact();
   }, [id]); 
 
@@ -26,8 +24,7 @@ function ContactDetails() {
     if (window.confirm("Delete this contact?")) {
       await deleteDoc(doc(db, 'contacts', id));
       navigate('/'); 
-    }
-  };
+    } };
 
   if (!contact) {
     return <div>Loading...</div>;
