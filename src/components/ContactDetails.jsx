@@ -17,8 +17,7 @@ import { db } from '../db';
         setContact({ id: docSnap.id, ...docSnap.data() });
       } else {
         console.log("No such document!");}};
-    fetchContact();
-  }, [id]); 
+    fetchContact();}, [id]); 
 
   const handleDelete = async () => {
     if (window.confirm("Delete this contact?")) {
@@ -27,8 +26,7 @@ import { db } from '../db';
     } };
 
   if (!contact) {
-    return <div>Loading...</div>;
-  }
+    return <div>Loading...</div>;}
 
   return (
     <div className="contact-details">
@@ -43,7 +41,6 @@ import { db } from '../db';
         <button onClick={handleDelete} className="button-like danger">delete</button>
       </div>
     </div>
-  );
-}
+  );}
 
 export default ContactDetails;

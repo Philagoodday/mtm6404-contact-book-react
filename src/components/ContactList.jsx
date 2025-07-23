@@ -7,6 +7,7 @@ import { db } from '../db';
     const [contacts, setContacts] = useState([]);
     const [searchTerm, setSearchTerm] = useState('');
 
+    
     useEffect(() => {
         const fetchContacts = async () => {
       const q = query(collection(db, 'contacts'), orderBy('lastName'));

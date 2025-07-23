@@ -7,9 +7,9 @@ function AddContact() {
   const [contact, setContact] = useState({ firstName: '', lastName: '', email: '' });
   const navigate = useNavigate();
 
+
         const handleChange = (e) => {
-        setContact({ ...contact, [e.target.name]: e.target.value });
-  };
+        setContact({ ...contact, [e.target.name]: e.target.value });};
 
     const handleSubmit = async (e) => {
     e.preventDefault(); 

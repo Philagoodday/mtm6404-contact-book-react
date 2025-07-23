@@ -30,6 +30,7 @@ function EditContact() {
     navigate(`/contact/${id}`); 
   };
 
+  
   return (
     <form onSubmit={handleSubmit} className="contact-form">
       <h2>Edit comtact</h2>
